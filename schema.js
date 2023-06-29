@@ -1,7 +1,7 @@
 const { gql } = require("apollo-server");
 
 exports.typeDefs = gql`
-    type Query{
+    type Query {
         courses(filter: CoursesFilter): [Course!]!
         course(id: ID!): Course
         genres: [Genre!]!
@@ -9,6 +9,32 @@ exports.typeDefs = gql`
         numOfCourses: Int
         price: Float
         isTrainer: Boolean
+    }
+
+    type Mutation {
+        addGenre(input: AddGenreInput!): Genre!
+        addCourse(input: AddCourseInput!): Course!
+        addReview(input: AddReviewInput!): Review!
+    }
+
+    input AddReviewInput {
+        date: String!
+        title: String!
+        comment: String!
+        rating: Int!
+        courseId: ID!
+    }
+
+    input AddGenreInput {
+        name: String!
+    }
+
+    input AddCourseInput{
+        name: String!
+        description: String!
+        price: Float!
+        discount: Boolean!
+        genreId: ID!
     }
 
     input CoursesFilter {
