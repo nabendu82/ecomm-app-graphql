@@ -15,6 +15,9 @@ exports.typeDefs = gql`
         addGenre(input: AddGenreInput!): Genre!
         addCourse(input: AddCourseInput!): Course!
         addReview(input: AddReviewInput!): Review!
+        deleteGenre(id: ID!): Boolean!
+        deleteCourse(id: ID!): Boolean!
+        deleteReview(id: ID!): Boolean!
     }
 
     input AddReviewInput {
